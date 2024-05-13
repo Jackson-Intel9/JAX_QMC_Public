@@ -3,7 +3,7 @@ import time
 
 from . config import Config, Sampler, ManyBodyCfg
 
-from jax.config import config; config.update("jax_enable_x64", True)
+import jax; jax.config.update("jax_enable_x64", True)
 
 def simple_fixture(name, params):
     @pytest.fixture(name=name, params=params)
