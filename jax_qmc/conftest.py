@@ -61,7 +61,7 @@ def benchmark_sampler_config():
 
 from . config.wavefunction import SlaterCfg
 
-antisymmetry        = pytest.simple_fixture("antisymmetry", params=(SlaterCfg(),))
+antisymmetry        = pytest.simple_fixture("antisymmetry", params=(SlaterCfg(),)
 antisymmetry_active = pytest.simple_fixture("antisymmetry_active", params=(True,False))
 
 @pytest.fixture
