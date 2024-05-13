@@ -3,7 +3,7 @@ import time
 
 from . config import Config, Sampler, ManyBodyCfg
 
-from jax.config import config; config.update("jax_enable_x64", True)
+import jax; jax.config.update("jax_enable_x64", True)
 
 def simple_fixture(name, params):
     @pytest.fixture(name=name, params=params)
@@ -61,7 +61,7 @@ def benchmark_sampler_config():
 
 from . config.wavefunction import SlaterCfg
 
-antisymmetry        = pytest.simple_fixture("antisymmetry", params=(SlaterCfg(),)
+antisymmetry        = pytest.simple_fixture("antisymmetry", params=(SlaterCfg(),))
 antisymmetry_active = pytest.simple_fixture("antisymmetry_active", params=(True,False))
 
 @pytest.fixture

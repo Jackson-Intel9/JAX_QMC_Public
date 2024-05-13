@@ -13,7 +13,7 @@ from jax_qmc.spatial import select_and_exchange_spins
 
 from jax_qmc.wavefunction import init_wavefunction, init_jit_and_vmap_nn
 
-from jax.config import config; config.update("jax_enable_x64", True)
+import jax; jax.config.update("jax_enable_x64", True)
 
 @pytest.mark.parametrize("n_keys", [100])
 @pytest.mark.parametrize("dtype", [numpy.float64,numpy.float32,numpy.float16, numpy.bfloat16])
