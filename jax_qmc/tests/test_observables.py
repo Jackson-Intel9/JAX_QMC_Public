@@ -18,7 +18,7 @@
 
 # from wavefunction import init_many_body_wf
 
-# import jax; config.update("jax_enable_x64", True)
+# from jax.config import config; config.update("jax_enable_x64", True)
 
 
 # # For this test, we're creating a single function that handles multiple tests

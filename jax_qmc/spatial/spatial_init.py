@@ -4,7 +4,7 @@ from jax import vmap
 
 from jax_qmc.config import Sampler
 
-import jax; config.update("jax_enable_x64", True)
+from jax.config import config; config.update("jax_enable_x64", True)
 
 
 def initialize_single_walker(key, sampler_config : Sampler, dtype):
