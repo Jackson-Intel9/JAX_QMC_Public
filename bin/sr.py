@@ -446,7 +446,7 @@ def main(cfg : OmegaConf) -> None:
                 save_walkers(x, spin, isospin, global_step, walker_dir, rank )
         
         if global_step == 100:
-                x.block_until_ready()
+            x.block_until_ready()
 
         if cfg.profile:
             if should_do_io(MPI_AVAILABLE, rank):
