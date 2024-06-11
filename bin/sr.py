@@ -445,9 +445,10 @@ def main(cfg : OmegaConf) -> None:
                 walker_dir = cfg.save_dir / pathlib.Path("walkers")
                 save_walkers(x, spin, isospin, global_step, walker_dir, rank )
         
-        if cfg.profile:
-            if global_step == 100:
+        if global_step == 100:
                 x.block_until_ready()
+
+        if cfg.profile:
             if should_do_io(MPI_AVAILABLE, rank):
                 jax.profiler.save_device_memory_profile(str(cfg.save_dir) + f"memory{global_step}.prof")
 
@@ -490,10 +491,9 @@ def main(cfg : OmegaConf) -> None:
         logger.info(f"step  = {global_step},      r = {metrics['metropolis/mean_sub_r']:.3f}")
         logger.info(f"step  = {global_step},  acc_x = {metrics['metropolis/accept_x']:.3f}")
         logger.info(f"step  = {global_step},  acc_s = {metrics['metropolis/accept_spin']:.3f}")
+        logger.info(f"time = {metrics['time']:.3f}")
         if global_step == 100:
             jax.profiler.stop_trace()
-        logger.info(f"time = {metrics['time']:.3f}")
-
         # Iterate:
         global_step += 1
 
