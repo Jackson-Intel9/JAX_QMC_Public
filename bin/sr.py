@@ -493,6 +493,7 @@ def main(cfg : OmegaConf) -> None:
         logger.info(f"step  = {global_step},  acc_s = {metrics['metropolis/accept_spin']:.3f}")
         logger.info(f"time = {metrics['time']:.3f}")
         if global_step == 100:
+            print("Collect 100 steps Profile data")
             jax.profiler.stop_trace()
         # Iterate:
         global_step += 1
